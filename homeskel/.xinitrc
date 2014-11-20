@@ -1,0 +1,3 @@
+[[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
+setxkbmap -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle
+exec wmii
