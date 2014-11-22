@@ -4,4 +4,6 @@ if [ "$1" = "-f" ]; then
 	force=
 fi
 
+mkdir -p ~/.vim/undo.d
+
 cp -TRu $force ./homeskel/ ~

@@ -31,6 +31,9 @@ endfunction
 set ignorecase smartcase nowrap nobackup writebackup
 set shortmess+=A
 
+set undofile
+set undodir=~/.vim/undo.d
+
 nmap <F4> :! %<.out<Enter>
 nmap <F5> :! gcc -o %<.out %<Enter>
 
