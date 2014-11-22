@@ -1,0 +1,7 @@
+#!/bin/bash
+force=
+if [ "$1" = "-i" ]; then
+	force='-i'
+fi
+
+cp -TR $force ./homeskel/ /etc/skel

@@ -1,0 +1,19 @@
+#!/bin/bash
+force='-i'
+if [ "$1" = "-f" ]; then
+	force=
+fi
+
+shopt -s dotglob globstar nullglob
+GLOBIGNORE='.:..'
+
+cd etc
+files="**"
+
+for file in $files; do
+	homefile="/etc/$file"
+	if [[ -e $homefile ]] && [[ ! -d $homefile ]]; then
+		echo $homefile
+		#cp $force $homefile $file
+	fi
+done

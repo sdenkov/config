@@ -1,0 +1,18 @@
+#!/bin/bash
+force='-i'
+if [ "$1" = "-f" ]; then
+	force=
+fi
+
+shopt -s dotglob globstar nullglob
+GLOBIGNORE='.:..'
+
+cd homeskel
+files="**"
+
+for file in $files; do
+	homefile="$HOME/$file"
+	if [[ -e $homefile ]] && [[ ! -d $homefile ]]; then
+		cp $force $homefile $file
+	fi
+done
