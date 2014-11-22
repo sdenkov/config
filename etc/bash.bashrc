@@ -23,7 +23,7 @@ esac
 [ -r /usr/share/bash-completion/bash_completion   ] && . /usr/share/bash-completion/bash_completion
 
 GLOBIGNORE=".:.."
-shopt -u dotglob
+shopt -s dotglob
 
 alias grep='grep --color=auto'
 alias ls='ls --color=auto'
