@@ -4,4 +4,4 @@ if [ "$1" = "-f" ]; then
 	force=
 fi
 
-cp -TR $force ./etc/ /etc
+cp -TRu $force ./etc/ /etc

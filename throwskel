@@ -4,4 +4,4 @@ if [ "$1" = "-i" ]; then
 	force='-i'
 fi
 
-cp -TR $force ./homeskel/ /etc/skel
+cp -TRu $force ./homeskel/ /etc/skel
