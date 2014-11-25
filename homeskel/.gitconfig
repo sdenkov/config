@@ -1,0 +1,7 @@
+[user]
+	name = Stoyan Denkov
+	email = sndenkov@gmail.com
+[push]
+	default = simple
+[core]
+	editor = vim
