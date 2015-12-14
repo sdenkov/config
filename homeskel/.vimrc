@@ -3,6 +3,7 @@ source $VIMRUNTIME/vimrc_example.vim
 behave mswin
 set selectmode=key
 
+if has("win32")
 set diffexpr=MyDiff()
 function MyDiff()
   let opt = '-a --binary '
@@ -27,6 +28,9 @@ function MyDiff()
   endif
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
+else
+set diffexpr=
+endif
 
 set ignorecase smartcase nowrap nobackup writebackup
 set shortmess+=A
