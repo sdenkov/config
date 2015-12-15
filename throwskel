@@ -1,5 +1,5 @@
 #!/bin/bash
-force=
+force="-v"
 if [ "$1" = "-i" ]; then
 	force='-i'
 fi
