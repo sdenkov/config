@@ -21,19 +21,16 @@ fi
 
 function PS1_Get_Err
 {
-	PS1_Err=$?
-	if [[ $PS1_Err -eq 0 ]]
+	local PS1_Err=$?
+	if [[ $PS1_Err -ne 0 ]]
 	then
-		PS1_Err=
-	else
-		PS1_Err="{$PS1_Err}"
+		echo "{$PS1_Err}"
 	fi
 }
 
 # Create themes
-PROMPT_COMMAND=PS1_Get_Err
-PS1_LONG="\n$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\w$COLOR_RES ${COLOR_ERR}\${PS1_Err}${COLOR_RES}\n\$ "
-PS1_SHORT="${COLOR_ERR}\${PS1_Err}${COLOR_RES}[$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\W$COLOR_RES]\$ "
+PS1_LONG="\n$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\w$COLOR_RES ${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}\n\$ "
+PS1_SHORT="${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}[$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\W$COLOR_RES]\$ "
 function ps1_long
 {
 	PS1=$PS1_LONG
