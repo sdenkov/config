@@ -29,8 +29,8 @@ function PS1_Get_Err
 }
 
 # Create themes
-PS1_LONG="\n$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\w$COLOR_RES ${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}\n\$ "
-PS1_SHORT="${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}[$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\W$COLOR_RES]\$ "
+PS1_LONG="\n$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\w$COLOR_RES ${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}\n\\$ "
+PS1_SHORT="${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}[$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\W$COLOR_RES]\\$ "
 function ps1_long
 {
 	PS1=$PS1_LONG
