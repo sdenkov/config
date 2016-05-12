@@ -44,7 +44,6 @@ function ps1_short
 alias ps1_default=ps1_long
 
 # Clean up namespace
-unset IS_SSH
 unset COLOR_RES
 unset COLOR_U_H
 unset COLOR_PWD
