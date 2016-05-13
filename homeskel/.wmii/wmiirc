@@ -21,6 +21,14 @@ noticebar=/rbar/!notice
 export WMII_NORMCOLORS='#000000 #ebf1f5 #bbccdd'
 export WMII_FOCUSCOLORS='#000000 #ccccff #bbbbff'
 
+# Make necessary adjustments if run from a VNC session
+if [ "$IS_VNC" = "1" ]
+then
+	WMII_NORMCOLORS='#000000 #178261 #bbddbb'
+	WMII_FOCUSCOLORS='#000000 #9fff94 #176800'
+	MODKEY=Mod4-i,
+fi
+
 export WMII_BACKGROUND='#333333'
 #export WMII_FONT='-*-fixed-medium-r-*-*-13-*-*-*-*-*-*-*'
 export WMII_FONT='xft:Sans-11'
@@ -57,9 +65,16 @@ wmiir write /tagrules <<!
 !
 
 # Status Bar Info
+if [ "$IS_VNC" = "1" ]
+then
+status() {
+	echo -n CPU: $(uptime | sed 's/.*://; s/,//g') '|' RAM $(free -m | sed -n '/Mem/s/Mem:\s*\([0-9]*\)\s*\([0-9]*\)\s*\([0-9]*\).*/\2\/\1/p') MB '|' $(date +'%a %d.%m.%Y %R')
+}
+else
 status() {
 	echo -n CPU: $(uptime | sed 's/.*://; s/,//g') 'Temp:' $(acpi -t | sed 's/.*, //; s/\.[0-9] degrees //') '|' RAM $(free -m | sed -n '/Mem/s/Mem:\s*\([0-9]*\)\s*\([0-9]*\)\s*\([0-9]*\).*/\2\/\1/p') MB '|' BAT $(acpi -b | grep -oe '[0-9]*%') '|' $(date +'%a %d.%m.%Y %R')
 }
+fi
 
 local_events() { true;}
 wi_runconf -s wmiirc_local
