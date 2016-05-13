@@ -3,14 +3,14 @@
 #
 
 # Check if we are running in an ssh session
-export IS_SSH=0
-pstree -s $$ | grep -qe '-sshd-' && IS_SSH=1
+export IS_SSH_SESSION=0
+pstree -s $$ | grep -qe '-sshd-' && IS_SSH_SESSION=1
 
-[[ -v IS_VNC ]] || export IS_VNC=0
+[[ -v IS_VNC_SESSION ]] || export IS_VNC_SESSION=0
 
 # Set up colors
 COLOR_RES='\[\e[0m\]'
-if [[ $IS_SSH -eq 1 || $IS_VNC -eq 1 ]]
+if [[ $IS_SSH_SESSION -eq 1 || $IS_VNC_SESSION -eq 1 ]]
 then
 	COLOR_U_H='\[\e[0;32m\]'
 	COLOR_PWD='\[\e[1;34m\]'

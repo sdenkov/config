@@ -2,5 +2,5 @@
 
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
-export IS_VNC=1
+export IS_VNC_SESSION=1
 [[ -f ~/.xinitrc ]] && exec sh ~/.xinitrc
