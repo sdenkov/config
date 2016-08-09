@@ -10,5 +10,6 @@ alias rm='rm -I'
 
 alias cal='cal -m'
 alias bc='bc -l'
+alias ipa='ip a | grep '\''^[0-9]\|inet \([0-9]\+.\)\{3\}[0-9]\+'\'
 
 alias gitlog='git log --oneline --decorate'
