@@ -38,7 +38,7 @@ set shortmess+=A
 set undofile
 set undodir=~/.vim/undo.d
 
-nmap <F4> :! %<.out<Enter>
+nmap <F4> :! ./%<.out<Enter>
 nmap <F5> :! gcc -o %<.out %<Enter>
 
 vmap <F3> y:echo "<CR>gV
