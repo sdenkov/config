@@ -69,12 +69,19 @@ wmiir write /tagrules <<!
 if [ "$IS_VNC" = "1" ]
 then
 status() {
-	echo -n CPU: $(uptime | sed 's/.*://; s/,//g') '|' RAM $(free -m | sed -n '/Mem/s/Mem:\s*\([0-9]*\)\s*\([0-9]*\)\s*\([0-9]*\).*/\2\/\1/p') MB '|' $(date +'%a %d.%m.%Y %R')
+	echo CPU Hog: $(ps --no-headers -eo pcpu,comm --sort -pcpu | head -1) '|' CPU: $(uptime | sed 's/.*://; s/,//g') '|' RAM $(free -m | sed -n '/Mem/s/Mem:\s*\([0-9]*\)\s*\([0-9]*\)\s*\([0-9]*\).*/\2\/\1/p') MB '|' $(date +'%a %d.%m.%Y %R')
+}
+else
+if ( ls /sys/class/power_supply/BAT* > /dev/null 2> /dev/null )
+then
+status() {
+	echo CPU Hog: $(ps --no-headers -eo pcpu,comm --sort -pcpu | head -1) '|' CPU: $(uptime | sed 's/.*://; s/,//g') 'Temp:' $(acpi -t | sed 's/.*, //; s/\.[0-9] degrees //') '|' RAM $(free -m | sed -n '/Mem/s/Mem:\s*\([0-9]*\)\s*\([0-9]*\)\s*\([0-9]*\).*/\2\/\1/p') MB '|' BAT $(acpi -b | grep -oe '[0-9]*%') '|' $(date +'%a %d.%m.%Y %R')
 }
 else
 status() {
-	echo -n CPU: $(uptime | sed 's/.*://; s/,//g') 'Temp:' $(acpi -t | sed 's/.*, //; s/\.[0-9] degrees //') '|' RAM $(free -m | sed -n '/Mem/s/Mem:\s*\([0-9]*\)\s*\([0-9]*\)\s*\([0-9]*\).*/\2\/\1/p') MB '|' BAT $(acpi -b | grep -oe '[0-9]*%') '|' $(date +'%a %d.%m.%Y %R')
+	echo CPU Hog: $(ps --no-headers -eo pcpu,comm --sort -pcpu | head -1) '|' CPU: $(uptime | sed 's/.*://; s/,//g') 'Temp:' $(acpi -t | sed 's/.*, //; s/\.[0-9] degrees //') '|' RAM $(free -m | sed -n '/Mem/s/Mem:\s*\([0-9]*\)\s*\([0-9]*\)\s*\([0-9]*\).*/\2\/\1/p') MB '|' $(date +'%a %d.%m.%Y %R')
 }
+fi
 fi
 
 local_events() { true;}
@@ -122,6 +129,8 @@ Event Notice
 	xpid = $!
 
 # Menus
+Menu Client-3-Close
+	true
 Menu Client-3-Delete
 	wmiir xwrite /client/$1/ctl kill
 Menu Client-3-Kill
@@ -264,7 +273,6 @@ wmiir write /ctl <<!
 	grabmod $MODKEY
 	border 1
 !
-xsetroot -solid "$WMII_BACKGROUND" &
 
 # Misc
 progsfile="$(wmiir namespace)/.proglist"

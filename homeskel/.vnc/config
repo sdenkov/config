@@ -1,6 +1,6 @@
 SecurityTypes=TLSVnc
-desktop=raspberry
-geometry=1024x768
+desktop=sdenkov-arch
+geometry=1920x1080
 dpi=96
 localhost
 alwaysshared
