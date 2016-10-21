@@ -14,6 +14,10 @@ alias cal='cal -m'
 alias bc='bc -l'
 alias ipa='ip a | grep '\''^[0-9]\|inet \([0-9]\+.\)\{3\}[0-9]\+'\'
 
+alias ffprobe='ffprobe -hide_banner'
+alias ffplay='ffplay -hide_banner'
+alias ffmpeg='ffmpeg -hide_banner'
+
 alias gitlog='git log --oneline --decorate'
 
 alias myfind='find 2>/dev/null . -name'

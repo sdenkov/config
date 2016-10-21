@@ -32,6 +32,9 @@ else
 set diffexpr=
 endif
 
+colors torte
+set background=dark
+
 set ignorecase smartcase nowrap nobackup writebackup
 set shortmess+=A
 
