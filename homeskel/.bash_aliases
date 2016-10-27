@@ -22,3 +22,5 @@ alias gitlog='git log --oneline --decorate'
 
 alias myfind='find 2>/dev/null . -name'
 alias myfindall='find 2>/dev/null / -name'
+
+alias devbus='qdbus --bus "unix:path=/run/dev-dbus.socket" com.robotev.bus'
