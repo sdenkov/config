@@ -12,6 +12,7 @@ alias rm='rm -I'
 
 alias cal='cal -m'
 alias bc='bc -l'
+alias feh='feh --scale-down --auto-zoom'
 alias ipa='ip a | grep '\''^[0-9]\|inet \([0-9]\+.\)\{3\}[0-9]\+'\'
 
 alias ffprobe='ffprobe -hide_banner'
