@@ -52,7 +52,10 @@ unset COLOR_PWD
 unset COLOR_ERR
 
 
-# Continue
+# Set up thefuck
+command -V thefuck > /dev/null && eval $(thefuck --alias)
 
+# More
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 ps1_default
+

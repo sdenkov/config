@@ -21,7 +21,7 @@ alias ffmpeg='ffmpeg -hide_banner'
 
 alias gitlog='git log --oneline --decorate'
 
-alias myfind='find 2>/dev/null . -name'
-alias myfindall='find 2>/dev/null / -name'
+alias myfind='find 2>/dev/null . -iname'
+alias myfindall='find 2>/dev/null / -iname'
 
 alias devbus='qdbus --bus "unix:path=/run/dev-dbus.socket" com.robotev.bus'
