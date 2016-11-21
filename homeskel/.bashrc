@@ -53,7 +53,7 @@ unset COLOR_ERR
 
 
 # Set up thefuck
-command -V thefuck > /dev/null && eval $(thefuck --alias)
+command -V thefuck 2> /dev/null && eval $(thefuck --alias)
 
 # More
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
