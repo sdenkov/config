@@ -45,6 +45,8 @@ function ps1_short
 
 alias ps1_default=ps1_long
 
+eval $(dircolors)
+
 # Clean up namespace
 unset COLOR_RES
 unset COLOR_U_H
