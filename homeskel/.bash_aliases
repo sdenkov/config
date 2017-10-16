@@ -30,3 +30,4 @@ alias tree='tree -a --dirsfirst -I ".git"'
 alias treef='tree -if'
 
 alias devbus='qdbus --bus "unix:path=/run/dev-dbus.socket" com.robotev.bus'
+alias rpimount='mount -o loop,offset=$((206848*512))'
