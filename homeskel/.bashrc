@@ -57,6 +57,12 @@ unset COLOR_ERR
 # Set up thefuck
 command -V thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
 
+# Set up big history
+export HISTCONTROL=ignoredups
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+shopt -s histappend
+
 # More
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 ps1_default
