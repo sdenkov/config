@@ -2,5 +2,17 @@
 
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
-export IS_VNC_SESSION=1
-[[ -f ~/.xinitrc ]] && exec sh ~/.xinitrc
+OS=`uname -s`
+if [ $OS = 'Linux' ]; then
+  case "$WINDOWMANAGER" in
+    *gnome*)
+      if [ -e /etc/SuSE-release ]; then
+        PATH=$PATH:/opt/gnome/bin
+        export PATH
+      fi
+      ;;
+  esac
+fi
+if [ -f ~/.xinitrc ]; then
+	exec sh ~/.xinitrc
+fi
