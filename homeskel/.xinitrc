@@ -7,5 +7,6 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 setxkbmap -layout us,bg -variant ,phonetic -option grp:alt_shift_toggle
+xset s off -dpms
 [[ -f ~/.fehbg ]] && ~/.fehbg
 exec i3
