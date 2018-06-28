@@ -22,6 +22,7 @@ for_window [title="^qtcreator_process_stub$"] floating enable
 for_window [class="^ffplay"] floating enable
 for_window [class="^MPlayer"] floating enable
 for_window [class="^Vlc"] floating enable
+for_window [class="^mpv"] floating enable
 for_window [tiling] title_format " %title"
 for_window [floating] title_format " %title"
 
