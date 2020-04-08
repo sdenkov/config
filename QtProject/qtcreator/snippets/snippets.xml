@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<snippets>
+    <snippet group="C++" trigger="contfor" id="" complement="container for, custom iterator" removed="false" modified="false">for(int $it$ = 0, len = $cont$.length(); $it$ &lt; len; ++$it$) {
+	auto&amp; $cur$ = $cont$.at($it$);
+	$$
+}</snippet>
+    <snippet group="C++" trigger="contfor" id="" complement="container for, iterator i" removed="false" modified="false">for(int i = 0, len = $cont$.length(); i &lt; len; ++i) {
+	auto&amp; $cur$ = $cont$.at(i);
+	$$
+}</snippet>
+    <snippet group="C++" trigger="contfor" id="" complement="container for, iterator k" removed="false" modified="false">for(int k = 0, len = $cont$.length(); k &lt; len; ++k) {
+	auto&amp; $cur$ = $cont$.at(k);
+	$$
+}</snippet>
+    <snippet group="C++" trigger="iterfor" id="" complement="" removed="false" modified="false">for(auto it = $cont$.constBegin(); it != $cont$.constEnd(); ++it) {
+	auto&amp; $cur$ = *it;
+	$$
+}</snippet>
+    <snippet group="C++" trigger="skelTableModel" id="" complement="cpp" removed="false" modified="false">$name$::$name$(QObject* parent)
+	: QAbstractTableModel(parent)
+{
+
+}
+
+int $name$::rowCount(const QModelIndex&amp; parent) const
+{
+	(void)parent;
+	return items.length();
+}
+
+int $name$::columnCount(const QModelIndex&amp; parent) const
+{
+	(void)parent;
+	return NumCols;
+}
+
+QVariant $name$::data(const QModelIndex&amp; index, int role) const
+{
+	if(!index.isValid() || (role != Qt::DisplayRole &amp;&amp; role != Qt::EditRole))
+		return QVariant();
+
+	int row = index.row();
+	int col = index.column();
+	const DataType&amp; d = items.at(row);
+
+	switch(col) {
+	}
+
+	return QVariant();
+}
+
+QVariant $name$::headerData(int section, Qt::Orientation orientation, int role) const
+{
+	if(role != Qt::DisplayRole)
+		return QVariant();
+
+	if(orientation == Qt::Vertical)
+		return section;
+
+	switch(section) {
+
+	}
+}
+
+Qt::ItemFlags $name$::flags(const QModelIndex&amp; index) const
+{
+	switch(index.column()) {
+	default:
+		return Qt::ItemIsEnabled;
+	}
+}
+</snippet>
+    <snippet group="C++" trigger="skelTableModel" id="" complement="header" removed="false" modified="false">class $name$ : public QAbstractTableModel
+{
+	Q_OBJECT
+public:
+	enum {
+		NumCols
+	};
+
+	struct DataType {
+	};
+
+	$name$(QObject* parent = nullptr);
+
+	int rowCount(const QModelIndex&amp; parent) const;
+	int columnCount(const QModelIndex&amp; parent) const;
+	QVariant data(const QModelIndex&amp; index, int role) const;
+	QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+	Qt::ItemFlags flags(const QModelIndex&amp; index) const;
+
+private:
+	QList&lt;DataType&gt; items;
+};</snippet>
+    <snippet group="C++" trigger="class" id="cpp_genericclass" complement="" removed="true" modified="false">class $name$
+{
+public:
+    $name$() {}
+};</snippet>
+    <snippet group="C++" trigger="class" id="cpp_qobjectclass" complement="derived from QObject" removed="true" modified="false">class $name$ : public QObject
+{
+    Q_OBJECT
+public:
+    $name$() {}
+    virtual ~$name$() {}
+};</snippet>
+    <snippet group="C++" trigger="class" id="cpp_qwidgetclass" complement="derived from QWidget" removed="true" modified="false">class $name$ : public QWidget
+{
+    Q_OBJECT
+public:
+    $name$() {}
+    virtual ~$name$() {}
+};</snippet>
+    <snippet group="C++" trigger="class" id="cpp_classtemplate" complement="template" removed="true" modified="false">template &lt;typename $T$&gt;
+class $name$
+{
+public:
+    $name$() {}
+};</snippet>
+    <snippet group="C++" trigger="do" id="cpp_do" complement="" removed="true" modified="false">do {
+    $$
+} while ($condition$);</snippet>
+    <snippet group="C++" trigger="else" id="cpp_else" complement="" removed="true" modified="false">else {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="else" id="cpp_elsewithif" complement="with if" removed="true" modified="false">else if ($condition$) {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="for" id="cpp_for" complement="" removed="true" modified="false">for (int $var$ = 0; $var$ &lt; $total$; ++$var$) {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="foreach" id="cpp_foreach" complement="" removed="true" modified="false">foreach ($var$, $container$) {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="if" id="cpp_if" complement="" removed="true" modified="false">if ($condition$) {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="if" id="cpp_ifandelse" complement="and else" removed="true" modified="false">if ($condition$) {
+    $$
+} else {
+}</snippet>
+    <snippet group="C++" trigger="while" id="cpp_while" complement="" removed="true" modified="false">while ($condition$) {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="using" id="cpp_usingnamespace" complement="namespace" removed="true" modified="false">using namespace $name$;</snippet>
+    <snippet group="C++" trigger="try" id="cpp_trycatch" complement="and catch" removed="true" modified="false">try {
+    $$
+} catch (...) {
+}</snippet>
+    <snippet group="C++" trigger="switch" id="cpp_switch" complement="" removed="true" modified="false">switch ($control$) {
+case $value$:
+    $$
+    break;
+default:
+    break;
+}</snippet>
+    <snippet group="C++" trigger="struct" id="cpp_structtemplate" complement="template" removed="true" modified="false">template &lt;typename $T$&gt;
+struct $name$
+{
+    $name$() {}
+};</snippet>
+    <snippet group="C++" trigger="struct" id="cpp_genericstruct" complement="" removed="true" modified="false">struct $name$
+{
+    $name$() {}
+};</snippet>
+    <snippet group="C++" trigger="Q_PROPERTY" id="cpp_q_property" complement="" removed="true" modified="false">Q_PROPERTY($type$ $name$ READ $name$ WRITE set$name:c$ NOTIFY $name$Changed)</snippet>
+    <snippet group="C++" trigger="namespace" id="cpp_namespace" complement="" removed="true" modified="false">namespace $name$ {
+    $$
+}</snippet>
+    <snippet group="C++" trigger="main" id="cpp_main" complement="" removed="true" modified="false">int main(int argc, char *argv[])
+{
+    $$
+    return 0;
+}
+</snippet>
+    <snippet group="C++" trigger="licqtc" id="license-qtc" complement="" removed="true" modified="false">/****************************************************************************
+**
+@if ('%{Env:QTC_COPYRIGHT_USER}' === '' || '%{Env:QTC_COPYRIGHT_EMAIL}' === '')
+** Copyright (C) %{CurrentDate:yyyy} $copyright_user$ &lt;$copyright_email$&gt;.
+@else
+** Copyright (C) %{CurrentDate:yyyy} %{Env:QTC_COPYRIGHT_USER} &lt;%{Env:QTC_COPYRIGHT_EMAIL}&gt;.
+@endif
+** Contact: https://www.qt.io/licensing/
+**
+** This file is part of %{CurrentProject:Name}
+**
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and The Qt Company. For licensing terms
+** and conditions see https://www.qt.io/terms-conditions. For further
+** information use the contact form at https://www.qt.io/contact-us.
+**
+** GNU General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU
+** General Public License version 3 as published by the Free Software
+** Foundation with exceptions as appearing in the file LICENSE.GPL3-EXCEPT
+** included in the packaging of this file. Please review the following
+** information to ensure the GNU General Public License requirements will
+** be met: https://www.gnu.org/licenses/gpl-3.0.html.
+**
+****************************************************************************/
+
+$$</snippet>
+    <snippet group="C++" trigger="liclgpl" id="license-lgpl" complement="" removed="true" modified="false">/**
+@if ('%{CurrentProject:Name}' !== '')
+ ** This file is part of the %{CurrentProject:Name} project.
+@endif
+@if ('%{Env:QTC_COPYRIGHT_USER}' === '' || '%{Env:QTC_COPYRIGHT_EMAIL}' === '')
+ ** Copyright %{CurrentDate:yyyy} $copyright_user$ &lt;$copyright_email$&gt;.
+@else
+ ** Copyright %{CurrentDate:yyyy} %{Env:QTC_COPYRIGHT_USER} &lt;%{Env:QTC_COPYRIGHT_EMAIL}&gt;.
+@endif
+ **
+ ** This program is free software: you can redistribute it and/or modify
+ ** it under the terms of the GNU Lesser General Public License as
+ ** published by the Free Software Foundation, either version 3 of the
+ ** License, or (at your option) any later version.
+ **
+ ** This program is distributed in the hope that it will be useful,
+ ** but WITHOUT ANY WARRANTY; without even the implied warranty of
+ ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ ** GNU Lesser General Public License for more details.
+ **
+ ** You should have received a copy of the GNU Lesser General Public License
+ ** along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ **/
+
+$$</snippet>
+    <snippet group="C++" trigger="licgpl" id="license-gpl" complement="" removed="true" modified="false">/**
+@if ('%{CurrentProject:Name}' !== '')
+ ** This file is part of the %{CurrentProject:Name} project.
+@endif
+@if ('%{Env:QTC_COPYRIGHT_USER}' === '' || '%{Env:QTC_COPYRIGHT_EMAIL}' === '')
+ ** Copyright %{CurrentDate:yyyy} $copyright_user$ &lt;$copyright_email$&gt;.
+@else
+ ** Copyright %{CurrentDate:yyyy} %{Env:QTC_COPYRIGHT_USER} &lt;%{Env:QTC_COPYRIGHT_EMAIL}&gt;.
+@endif
+ **
+ ** This program is free software: you can redistribute it and/or modify
+ ** it under the terms of the GNU General Public License as published by
+ ** the Free Software Foundation, either version 3 of the License, or
+ ** (at your option) any later version.
+ **
+ ** This program is distributed in the hope that it will be useful,
+ ** but WITHOUT ANY WARRANTY; without even the implied warranty of
+ ** MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ ** GNU General Public License for more details.
+ **
+ ** You should have received a copy of the GNU General Public License
+ ** along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+ **/
+
+$$</snippet>
+    <snippet group="C++" trigger="licbsd" id="license-bsd" complement="" removed="true" modified="false">/**
+@if ('%{CurrentProject:Name}' !== '')
+ ** This file is part of the %{CurrentProject:Name} project.
+@endif
+@if ('%{Env:QTC_COPYRIGHT_USER}' === '' || '%{Env:QTC_COPYRIGHT_EMAIL}' === '')
+ ** Copyright %{CurrentDate:yyyy} $copyright_user$ &lt;$copyright_email$&gt;.
+@else
+ ** Copyright %{CurrentDate:yyyy} %{Env:QTC_COPYRIGHT_USER} &lt;%{Env:QTC_COPYRIGHT_EMAIL}&gt;.
+@endif
+ ** All rights reserved.
+ **
+ ** Redistribution and use in source and binary forms, with or without
+ ** modification, are permitted provided that the following conditions are
+ ** met:
+ **
+ ** 1. Redistributions of source code must retain the above copyright notice,
+ **    this list of conditions and the following disclaimer.
+ **
+ ** 2. Redistributions in binary form must reproduce the above copyright
+ **    notice, this list of conditions and the following disclaimer in the
+ **    documentation and/or other materials provided with the distribution.
+ **
+ ** THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS ``AS IS'' AND ANY
+ ** EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ ** WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ ** DISCLAIMED. IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE FOR ANY
+ ** DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ ** (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ ** SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ ** CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ ** LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ ** OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ ** SUCH DAMAGE.
+ **/
+
+$$</snippet>
+    <snippet group="C++" trigger="lic" id="license-configured" complement="" removed="true" modified="false">%{Cpp:LicenseTemplate}
+$$</snippet>
+</snippets>
