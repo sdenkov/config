@@ -32,14 +32,13 @@ else
 set diffexpr=
 endif
 
-colors torte
-set background=dark
+set guifont=Consolas:h12
+set enc=utf-8
 
 set ignorecase smartcase nowrap nobackup writebackup
 set shortmess+=A
 
 set undofile
-set undodir=~/.vim/undo.d
 
 nmap <F4> :! ./%<.out<Enter>
 nmap <F5> :! gcc -o %<.out %<Enter>
@@ -59,3 +58,12 @@ silent! unmap <C-A>
 
 imap <C-Down> <C-O><C-E>
 imap <C-Up> <C-O><C-Y>
+
+if has("win32")
+	set clipboard=unnamed
+	set undodir=$HOME/vimundo.d
+else
+	colors torte
+	set background=dark
+	set undodir=~/.vim/undo.d
+endif
