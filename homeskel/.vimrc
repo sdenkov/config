@@ -48,6 +48,8 @@ nmap <F3> :echo "<CR>
 
 set guioptions-=T
 set guioptions+=b
+set isfname-==
+
 nmap <Leader>c :set cursorline!<Enter>
 nmap <Leader>b :set scrollbind!<Enter>
 nmap <Leader>f :vertical normal <Enter>
