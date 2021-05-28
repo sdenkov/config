@@ -53,10 +53,6 @@ unset COLOR_U_H
 unset COLOR_PWD
 unset COLOR_ERR
 
-
-# Set up thefuck
-command -V thefuck > /dev/null 2>&1 && eval $(thefuck --alias)
-
 # Set up big history
 export HISTCONTROL=ignoredups
 export HISTSIZE=100000
