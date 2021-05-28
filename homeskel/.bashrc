@@ -2,6 +2,14 @@
 # ~/.bashrc
 #
 
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+# Basic globbing and expansion stuff
+GLOBIGNORE=".:.."
+shopt -s dotglob
+shopt -s progcomp_alias direxpand
+
 # Check if we are running in an ssh session
 export IS_SSH_SESSION=0
 pstree -s $$ | grep -qe '-sshd-' && IS_SSH_SESSION=1
@@ -31,19 +39,18 @@ function PS1_Get_Err
 }
 
 # Create themes
-PS1_LONG="\n$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\w$COLOR_RES ${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}\n\\$ "
-PS1_SHORT="${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}[$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\W$COLOR_RES]\\$ "
-function ps1_long
-{
-	PS1=$PS1_LONG
-}
+PS1_WINTITLE=""
 
-function ps1_short
-{
-	PS1=$PS1_SHORT
-}
+case $TERM in
+	xterm*)
+		PS1_WINTITLE="\[\e]2;\u@\h: \w\007\]"
+		;;
+	*)
+		;;
+esac
 
-alias ps1_default=ps1_long
+PS1_LONG="\n$PS1_WINTITLE$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\w$COLOR_RES ${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}\n\\$ "
+PS1_SHORT="$PS1_WINTITLE${COLOR_ERR}\$(PS1_Get_Err)${COLOR_RES}[$COLOR_U_H\u@\h$COLOR_RES $COLOR_PWD\W$COLOR_RES]\\$ "
 
 eval $(dircolors)
 
@@ -53,6 +60,9 @@ unset COLOR_U_H
 unset COLOR_PWD
 unset COLOR_ERR
 
+# Prompt commands are usually crap
+PROMPT_COMMAND=""
+
 # Set up big history
 export HISTCONTROL=ignoredups
 export HISTSIZE=100000
@@ -61,5 +71,5 @@ shopt -s histappend
 
 # More
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
-ps1_default
+PS1=$PS1_LONG
 
