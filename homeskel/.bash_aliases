@@ -21,13 +21,15 @@ alias ffprobe='ffprobe -hide_banner'
 alias ffplay='ffplay -hide_banner'
 alias ffmpeg='ffmpeg -hide_banner'
 
-alias gitlog='git log --oneline --decorate'
+alias gitlog='git log --oneline --decorate -n25'
 
 alias myfind='find 2>/dev/null . -iname'
 alias myfindall='find 2>/dev/null / -iname'
 
 alias tree='tree -a --dirsfirst -I ".git"'
 alias treef='tree -if'
+
+alias gitcd='cd $(git rev-parse --show-toplevel)'
 
 alias devbus='qdbus --bus "unix:path=/run/dev-dbus.socket" com.robotev.bus'
 alias rpimount='mount -o loop,offset=$((206848*512))'
