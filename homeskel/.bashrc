@@ -71,5 +71,6 @@ shopt -s histappend
 
 # More
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
+export EDITOR=vim
 PS1=$PS1_LONG
 
